@@ -3,22 +3,31 @@
 Uncovering hidden financial fraud patterns using SQL, unsupervised ML, and Python.
 This project traces how millions were siphoned through balance-draining transactions, transfer loops, and suspicious patterns in digital banking logs.
 
+## Dataset Source
+[Financial Fraud Detection Dataset on Kaggle](https://www.kaggle.com/datasets/sriharshaeedala/financial-fraud-detection-dataset/data)
+
 ## Project Structure
 
-missing-millions/
+```
+transaction_forensic_project/
 ├── data/
-│   ├── raw_data.csv               # Original Kaggle dataset
-│   └── cleaned_transactions.csv   # Cleaned & filtered dataset
-├── 01_data_cleaning.ipynb         # Preprocessing, cleaning, filtering
-├── 02_sql_analysis.ipynb          # Forensic SQL queries on fraud types
-├── 03_python_anomaly_detection.ipynb # Isolation Forest & behavioral features
-├── 04_dashboard.ipynb             # Metrics exported for Looker Studio
-├── README.md
-└── requirements.txt
+│   ├── cleaned_transactions.csv           # Cleaned & filtered dataset
+│   └── Synthetic_Financial_datasets_log.csv # Original dataset
+├── notebooks/
+│   ├── 01_data_exploration.ipynb         # Data exploration and cleaning
+│   ├── 02_sql_analysis.ipynb             # Forensic SQL queries on fraud types
+│   └── 03_python_anomaly_detection.ipynb # Isolation Forest & behavioral features
+├── sql_queries/                          # SQL query files (removed in latest update)
+├── dashboards/                           # Dashboard files
+├── README.md/
+│   └── Missing_Millions_README.md        # This file
+├── requirements.txt                      # Python dependencies
+└── .gitignore                           # Git ignore rules
+```
 
 ## Code Execution Flow (Step-by-Step)
 
-### 01. Data Cleaning (01_data_cleaning.ipynb)
+### 01. Data Exploration (01_data_exploration.ipynb)
 
 - Load dataset (~6.3M rows)
 - Remove irrelevant transaction types (DEBIT, etc.)
@@ -59,10 +68,10 @@ Steps:
 5. Evaluation: Compares isAnomaly vs isFraud using confusion matrix and classification report
 6. Cumulative Plot: Fraud loss over days via cumsum()
 
-### 04. Dashboard / Export (04_dashboard.ipynb)
+### 04. Dashboard (dashboards/)
 
-- Converts key metrics to CSV format
-- Uploadable into Looker Studio or Power BI
+- Dashboard files for visualization
+- Can be used with Looker Studio, Power BI, or other BI tools
 - Metrics included:
   - Total Fraud Loss Over Time
   - Top Fraudulent Senders/Receivers
@@ -81,27 +90,26 @@ Visualization                    | Seaborn, Matplotlib, Looker Studio
 
 ## How to Run the Project
 
-1. Clone the Repo
+1. **Clone the Repository**
+```bash
+git clone https://github.com/mahalakshmi-2000/missing_millions.git
+cd missing_millions
+```
 
-git clone https://github.com/yourusername/missing-millions.git
-cd missing-millions
-
-2. Install Dependencies
-
+2. **Install Dependencies**
+```bash
 pip install -r requirements.txt
+```
 
-You can use a venv if needed.
-
-3. Run Notebooks in Order
-
+3. **Run Notebooks in Order**
+```bash
 jupyter notebook
+```
 
 Open the following notebooks in this order:
-
-- 01_data_cleaning.ipynb
-- 02_sql_analysis.ipynb
-- 03_python_anomaly_detection.ipynb
-- 04_dashboard.ipynb (Optional for Looker Studio)
+- `notebooks/01_data_exploration.ipynb`
+- `notebooks/02_sql_analysis.ipynb`
+- `notebooks/03_python_anomaly_detection.ipynb`
 
 ## Dashboard (Optional)
 
@@ -138,7 +146,11 @@ oldbalanceDest / newbalanceDest | Before / After receiver balance
 
 ## Contact
 
-Mahalakshmi Rajabattula
-LinkedIn: https://linkedin.com/in/your-profile
-GitHub: https://github.com/yourusername
-Hyderabad, India
+**Mahalakshmi Rajabattula**  
+GitHub: [mahalakshmi-2000](https://github.com/mahalakshmi-2000)  
+Repository: [missing_millions](https://github.com/mahalakshmi-2000/missing_millions)  
+Location: Hyderabad, India
+
+---
+
+**Note**: This project focuses on transaction forensics and anomaly detection in financial datasets. The analysis reveals patterns in fraudulent transactions and provides tools for detecting suspicious financial activities.
